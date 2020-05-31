@@ -5,7 +5,7 @@ using Huy.Framework.Types;
 using static Huy.Framework.Types.UnitExt;
 using Unit = Huy.Framework.Types.Unit;
 
-
+// Experimental 
 namespace Huy.Framework.DependencyInjection
 {
 	public class Dispatcher<TMessage, TResult>
@@ -46,6 +46,7 @@ namespace Huy.Framework.DependencyInjection
 	public class Program
 	{ 
 		private static Dispatcher<ICommand, Result<Unit>> _dispatcher;
+		private static Dispatcher<IQuery, Result<Unit>> _dispatcher2;
 		public static void Initialize()
 		{
 			_dispatcher = new Dispatcher<ICommand, Result<Unit>>();

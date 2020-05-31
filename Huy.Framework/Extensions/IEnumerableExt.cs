@@ -25,17 +25,5 @@ namespace Huy.Framework.Extensions
 
 			return Unit();
 		}
-		
-		// this maybe outdated in the future
-		public static async IAsyncEnumerable<TResult> ToAsyncEnumerable<T, TResult>(
-			this IEnumerable<T> @this, 
-			Func<T, Task<TResult>> f) 
-		{
-			var arr = @this.ToArray();
-			for (var i = 0; i < arr.Length; i++)
-			{
-				yield return await f(arr[i]);
-			}
-		}
 	}
 }

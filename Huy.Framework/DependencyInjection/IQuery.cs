@@ -1,6 +1,6 @@
 ﻿namespace Huy.Framework.DependencyInjection
 {
-	public class Query: IMessage
+	public interface IQuery: IMessage
 	{
 		
 	}
