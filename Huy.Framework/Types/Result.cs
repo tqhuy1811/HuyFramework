@@ -2,7 +2,7 @@
 
 namespace Huy.Framework.Types
 {
-	public class Result<T>
+	public struct Result<T>
 	{
 		public bool Success { get;}
 		public bool Failure
@@ -29,5 +29,11 @@ namespace Huy.Framework.Types
 		
 		public static Result<T> Ok(T data) => new Result<T>(true, data, default);
 		public static Result<T> Fail(Error error) => new Result<T>(false, default, error);
+		
+		
+		public static implicit operator Result<T>(Error e)
+		{
+			return Result<T>.Fail(e);
+		}
 	}
 }
