@@ -11,11 +11,7 @@ namespace Huy.Framework.Functions
 		{
 			var firstResult = await result;
 
-			return (firstResult.Failure) switch
-			{
-				true => Result<TE>.Fail(firstResult.Error),
-				false => f(firstResult.Data)
-			};
+			return firstResult.Bind(f);
 		}
 	}
 }
