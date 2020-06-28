@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Huy.Framework.Types
 {
-	public struct Result<T>
+	public readonly struct Result<T>
 	{
 		private readonly T _data;
 		public bool Success { get;}
