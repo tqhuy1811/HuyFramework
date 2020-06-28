@@ -6,12 +6,12 @@ namespace Huy.Framework.Functions
 {
 	public static partial class FuncExt
 	{
-		public static async Task<Result<TE>> Bind<T, TE>(this Task<Result<T>> result,
+		public static async Task<Result<T>> Tap<T, TE>(
+			this Task<Result<T>> r,
 			Func<T, Result<TE>> f)
 		{
-			var firstResult = await result;
-
-			return firstResult.Bind(f);
+			var awaitedResult = await r;
+			return awaitedResult.Tap(f);
 		}
 	}
 }
