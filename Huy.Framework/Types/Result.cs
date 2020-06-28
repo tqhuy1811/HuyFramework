@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Huy.Framework.Types
 {
 	public struct Result<T>
 	{
+		private readonly T _data;
 		public bool Success { get;}
-		public bool Failure
-		{
-			get => !Success;
-		}
+		public bool Failure => !Success;
 
 		public IEnumerable<T> AsEnumerable()
 		{
@@ -16,14 +15,22 @@ namespace Huy.Framework.Types
 				yield return Data;
 		}
 
-		public T Data { get; }
-		
+		public T Data
+		{
+			get
+			{
+				if(Failure) 
+					throw new InvalidOperationException();
+				return _data;
+			}
+		}
+
 		public Error Error { get; }
 
-		public Result(bool success, T data, Error error)
+		private Result(bool success, T data, Error error)
 		{
 			Success = success;
-			Data = data;
+			_data = data;
 			Error = error;
 		}		
 		
@@ -33,7 +40,7 @@ namespace Huy.Framework.Types
 		
 		public static implicit operator Result<T>(Error e)
 		{
-			return Result<T>.Fail(e);
+			return Fail(e);
 		}
 	}
 }
