@@ -14,7 +14,7 @@ namespace Huy.Framework.Functions
 			}
 			catch (Exception e)
 			{
-				return Result<T>.Fail(new UnExpectedError(e.Message));
+				return Result<T>.Fail(new UnexpectedError(e.Message));
 			}
 		}
 	}

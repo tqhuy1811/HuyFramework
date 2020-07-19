@@ -8,12 +8,23 @@ namespace Huy.Framework.Types
 		}
 
 		public string Message { get; }
-		
+
+		public override string ToString()
+		{
+			return Message;
+		}
 	}
 
-	public class UnExpectedError: Error
+	public class UnexpectedError: Error
 	{
-		public UnExpectedError(string message) : base(message)
+		public UnexpectedError(string message) : base(message)
+		{
+		}
+	}
+	
+	public class AggregatedError: Error
+	{
+		public AggregatedError(string message) : base(message)
 		{
 		}
 	}

@@ -20,7 +20,7 @@ namespace Huy.Framework.Types
 			get
 			{
 				if(Failure) 
-					throw new InvalidOperationException();
+					throw new InvalidOperationException($"{typeof(T)} is invalid");
 				return _data;
 			}
 		}
